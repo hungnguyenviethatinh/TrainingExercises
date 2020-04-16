@@ -2,12 +2,11 @@
 
 namespace Week1_OOP_Exercise4.Models
 {
-    public class Animal
+    public abstract class Animal
     {
         protected string _name;
         protected float _age;
         protected Sex _sex;
-        protected string _sound;
 
         public string GetName()
         {
@@ -24,6 +23,11 @@ namespace Week1_OOP_Exercise4.Models
             return _age;
         }
 
+        public void SetAge(float age)
+        {
+            _age = age;
+        }
+
         public Sex GetSex()
         {
             return _sex;
@@ -34,16 +38,30 @@ namespace Week1_OOP_Exercise4.Models
             _sex = sex;
         }
 
-        public virtual string GetSound()
-        {
-            return _sound;
-        }
+        public abstract string GetSound();
 
-        public Animal(string name = "", float age = 0, Sex sex = Sex.Male)
+        protected Animal(string name = "", float age = 0, Sex sex = Sex.Male)
         {
             _name = name;
             _age = age;
             _sex = sex;
+        }
+
+        public static AnimalType Identify(Animal animal)
+        {
+            string sound = animal.GetSound();
+
+            switch (sound)
+            {
+                case Constants.CatSound:
+                    return AnimalType.Cat;
+                case Constants.DogSound:
+                    return AnimalType.Dog;
+                case Constants.FrogSound:
+                    return AnimalType.Frog;
+                default:
+                    return AnimalType.Undefined;
+            }
         }
     }
 }

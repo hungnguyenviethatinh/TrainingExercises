@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\Enums.cs" />
     <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\Cat.cs" />

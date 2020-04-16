@@ -5,4 +5,12 @@
         Male,
         Female,
     }
+
+    public enum AnimalType
+    {
+        Cat,
+        Dog,
+        Frog,
+        Undefined,
+    }
 }
