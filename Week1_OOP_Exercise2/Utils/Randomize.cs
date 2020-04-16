@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Text;
+using Week1_OOP_Exercise2.Core;
 
 namespace Week1_OOP_Exercise2.Utils
 {
     public static class Randomize
     {
         static Random random = new Random();
-        const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         public static string GenerateString(int length = 7)
         {
-            int maxValue = characters.Length;
+            int maxValue = Constants.Alphabet.Length;
             StringBuilder builder = new StringBuilder(length);
 
             for (int i = 0; i < length; i++)
             {
                 int position = random.Next(maxValue);
-                builder.Append(characters[position]);
+                builder.Append(Constants.Alphabet[position]);
             }
 
             return builder.ToString();

@@ -4,9 +4,9 @@ using Week1_OOP_Exercise2.Utils;
 
 namespace Week1_OOP_Exercise2
 {
-    public class Program
+    static class Program
     {
-        public static void Main(string[] args)
+        static void Main()
         {
             Student[] students = new Student[10];
             Worker[] workers = new Worker[10];
