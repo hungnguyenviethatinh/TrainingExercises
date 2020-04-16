@@ -2,9 +2,9 @@
 
 namespace Week1_OOP_Exercise1
 {
-    public class Program
+    static class Program
     {
-        public static void Main(string[] args)
+        static void Main()
         {
             Console.Write("Press enter key to exit...");
             Console.ReadLine();
