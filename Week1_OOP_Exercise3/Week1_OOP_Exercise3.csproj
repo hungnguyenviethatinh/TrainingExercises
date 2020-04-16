@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Week_1_OOP_Exercise_3</RootNamespace>
-    <AssemblyName>Week 1 OOP Exercise 3</AssemblyName>
+    <AssemblyName>Week1_OOP_Exercise3</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
