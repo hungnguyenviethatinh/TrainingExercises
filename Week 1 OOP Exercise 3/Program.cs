@@ -3,9 +3,9 @@ using Week_1_OOP_Exercise_3.Models;
 
 namespace Week_1_OOP_Exercise_3
 {
-    public class Program
+    static class Program
     {
-        public static void Main(string[] args)
+        static void Main()
         {
             Shape[] shapes = new Shape[3];
             shapes[0] = new Circle(7);
