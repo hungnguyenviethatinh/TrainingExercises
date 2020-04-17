@@ -15,8 +15,10 @@ namespace Week1_OOP_Exercise5.Models
             {
                 InterestAmount = 0.0m;
             }
-
-            InterestAmount = months * InterestRate;
+            else
+            {
+                InterestAmount = months * InterestRate;
+            }
         }
     }
 }

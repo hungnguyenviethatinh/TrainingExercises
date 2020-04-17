@@ -15,13 +15,14 @@ namespace Week1_OOP_Exercise5.Models
             {
                 InterestAmount = months * InterestRate / 2;
             }
-
-            if (months <= 6 && Customer.Type == CustomerType.Individual)
+            else if (months <= 6 && Customer.Type == CustomerType.Individual)
             {
                 InterestAmount = 0.0m;
             }
-
-            InterestAmount = months * InterestRate;
+            else
+            {
+                InterestAmount = months * InterestRate;
+            }
         }
     }
 }

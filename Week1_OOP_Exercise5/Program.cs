@@ -12,6 +12,40 @@ namespace Week1_OOP_Exercise5
 
         static void Main()
         {
+            // Initializw bank's accounts and customers.
+            InitializeBank();
+
+            Console.WriteLine("Customer Type | Account Type | Balance | Interest Rate | Month(s) | Interest Amount");
+
+            // Interest in 1 months.
+            CalculateInterestAmount(1);
+
+            // Interest in 2 months.
+            CalculateInterestAmount(2);
+
+            // Interest in 3 months.
+            CalculateInterestAmount(3);
+
+            // Interest in 4 months.
+            CalculateInterestAmount(4);
+
+            // Interest in 6 months.
+            CalculateInterestAmount(6);
+
+            // Interest in 7 months.
+            CalculateInterestAmount(7);
+
+            // Interest in 12 months.
+            CalculateInterestAmount(12);
+
+            // Interest in 13 months.
+            CalculateInterestAmount(13);
+
+            Console.ReadLine();
+        }
+
+        static void InitializeBank()
+        {
             Customer[] customers = new Customer[8];
 
             customers[0] = new CompanyCustomer("Company 0");
@@ -36,71 +70,16 @@ namespace Week1_OOP_Exercise5
             accounts[7] = new DepositAccount(customers[7], 1, 5000.0m, 0.2m); // Deposit account has balance: > 1000.
 
             _bankManager.Accounts.AddRange(accounts);
+        }
 
-            _bankManager.CalculateInterestAmount(1);
-            Console.WriteLine("Interest ammount in 1 months:");
+        static void CalculateInterestAmount(int months)
+        {
+            _bankManager.CalculateInterestAmount(months);
+            var accounts = _bankManager.Accounts.GetAll();
             foreach (var account in accounts)
             {
-                Console.WriteLine($"{account.Customer.Type} {account.Type} get {account.InterestAmount}");
+                Console.WriteLine($"{account.Customer.Type}\t{account.Type}\t{account.Balance}\t{account.InterestRate}\t{months}\t{account.InterestAmount}");
             }
-            Console.WriteLine("-----------------------------------------------------");
-
-            _bankManager.CalculateInterestAmount(2);
-            Console.WriteLine("Interest ammount in 2 months:");
-            foreach (var account in accounts)
-            {
-                Console.WriteLine($"{account.Customer.Type} {account.Type} get {account.InterestAmount}");
-            }
-            Console.WriteLine("-----------------------------------------------------");
-
-            _bankManager.CalculateInterestAmount(3);
-            Console.WriteLine("Interest ammount in 3 months:");
-            foreach (var account in accounts)
-            {
-                Console.WriteLine($"{account.Customer.Type} {account.Type} get {account.InterestAmount}");
-            }
-            Console.WriteLine("-----------------------------------------------------");
-
-            _bankManager.CalculateInterestAmount(4);
-            Console.WriteLine("Interest ammount in 4 months:");
-            foreach (var account in accounts)
-            {
-                Console.WriteLine($"{account.Customer.Type} {account.Type} get {account.InterestAmount}");
-            }
-            Console.WriteLine("-----------------------------------------------------");
-
-            _bankManager.CalculateInterestAmount(6);
-            Console.WriteLine("Interest ammount in 6 months:");
-            foreach (var account in accounts)
-            {
-                Console.WriteLine($"{account.Customer.Type} {account.Type} get {account.InterestAmount}");
-            }
-            Console.WriteLine("-----------------------------------------------------");
-
-            _bankManager.CalculateInterestAmount(7);
-            Console.WriteLine("Interest ammount in 7 months:");
-            foreach (var account in accounts)
-            {
-                Console.WriteLine($"{account.Customer.Type} {account.Type} get {account.InterestAmount}");
-            }
-            Console.WriteLine("-----------------------------------------------------");
-
-            _bankManager.CalculateInterestAmount(12);
-            Console.WriteLine("Interest ammount in 12 months:");
-            foreach (var account in accounts)
-            {
-                Console.WriteLine($"{account.Customer.Type} {account.Type} get {account.InterestAmount}");
-            }
-            Console.WriteLine("-----------------------------------------------------");
-
-            _bankManager.CalculateInterestAmount(13);
-            Console.WriteLine("Interest ammount in 13 months:");
-            foreach (var account in accounts)
-            {
-                Console.WriteLine($"{account.Customer.Type} {account.Type} get {account.InterestAmount}");
-            }
-
-            Console.ReadLine();
         }
     }
 }
