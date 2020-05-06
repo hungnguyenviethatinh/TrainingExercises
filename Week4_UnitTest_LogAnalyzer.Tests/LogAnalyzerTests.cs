@@ -10,7 +10,7 @@ namespace Week4_UnitTest_LogAnalyzer.Tests
         [TestCase("filewithbadextension.foo", false)]
         [TestCase("filewithgoodextension.slf", true)]
         [TestCase("filewithgoodextension.SLF", true)]
-        [Category("Check FileName Extension")]
+        [Category("UnitTest_C2_LogAnalyzer")]
         public void IsValidLogFileName_VariousExtensions_CheckThem(string file, bool expected)
         {
             LogAnalyzer logAnalyzer = MakeLogAnalyzer();
@@ -21,7 +21,7 @@ namespace Week4_UnitTest_LogAnalyzer.Tests
         }
 
         [Test]
-        [Category("Expected Exception")]
+        [Category("UnitTest_C2_LogAnalyzer")]
         public void IsValidLogFileName_EmptyFileName_ThrowException()
         {
             LogAnalyzer logAnalyzer = MakeLogAnalyzer();
@@ -33,7 +33,7 @@ namespace Week4_UnitTest_LogAnalyzer.Tests
 
         [Test]
         [Ignore("This test is redundant!")]
-        [Category("Ignoring Test")]
+        [Category("UnitTest_C2_LogAnalyzer")]
         public void IsValidLogFileName_ValidExtensionLowerCase_ReturnTrue()
         {
             LogAnalyzer logAnalyzer = MakeLogAnalyzer();
@@ -46,7 +46,7 @@ namespace Week4_UnitTest_LogAnalyzer.Tests
         [TestCase("filewithbadextension.foo", false)]
         [TestCase("filewithgoodextension.slf", true)]
         [TestCase("filewithgoodextension.SLF", true)]
-        [Category("State-based Test")]
+        [Category("UnitTest_C2_LogAnalyzer")]
         public void IsValidLogFileName_WhenCalled_ChangeWasLastFileNameValid(string file, bool expected)
         {
             LogAnalyzer logAnalyzer = MakeLogAnalyzer();
