@@ -7,8 +7,7 @@ namespace Week1_OOP_Exercise5
 {
     static class Program
     {
-        static Bank _bank = new Bank();
-        static IBankManager _bankManager = new BankManager(_bank);
+        static IBankManager _bankManager = new BankManager();
 
         static void Main()
         {

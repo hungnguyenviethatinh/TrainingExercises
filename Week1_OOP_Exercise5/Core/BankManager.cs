@@ -1,5 +1,4 @@
-﻿using System;
-using Week1_OOP_Exercise5.Core.Interfaces;
+﻿using Week1_OOP_Exercise5.Core.Interfaces;
 using Week1_OOP_Exercise5.Models;
 
 namespace Week1_OOP_Exercise5.Core
@@ -10,6 +9,11 @@ namespace Week1_OOP_Exercise5.Core
 
         IAccountManger _accounts;
         ICustomerManger _customers;
+
+        public BankManager()
+        {
+            _bank = new Bank();
+        }
 
         public BankManager(Bank bank)
         {
