@@ -7,21 +7,15 @@ namespace Week4_UnitTest_LogAnalyzer.Tests
     [TestFixture]
     public class LogAnalyzerTests
     {
-        LogAnalyzer _logAnalyzer;
-
-        [OneTimeSetUp]
-        public void SetUp()
-        {
-            _logAnalyzer = new LogAnalyzer();
-        }
-
         [TestCase("filewithbadextension.foo", false)]
         [TestCase("filewithgoodextension.slf", true)]
         [TestCase("filewithgoodextension.SLF", true)]
         [Category("Check FileName Extension")]
         public void IsValidLogFileName_VariousExtensions_CheckThem(string file, bool expected)
         {
-            bool actual = _logAnalyzer.IsValidLogFileName(file);
+            LogAnalyzer logAnalyzer = MakeLogAnalyzer();
+
+            bool actual = logAnalyzer.IsValidLogFileName(file);
 
             Assert.AreEqual(expected, actual);
         }
@@ -30,7 +24,9 @@ namespace Week4_UnitTest_LogAnalyzer.Tests
         [Category("Expected Exception")]
         public void IsValidLogFileName_EmptyFileName_ThrowException()
         {
-            Exception exception = Assert.Catch<Exception>(() => _logAnalyzer.IsValidLogFileName(string.Empty));
+            LogAnalyzer logAnalyzer = MakeLogAnalyzer();
+
+            Exception exception = Assert.Catch<Exception>(() => logAnalyzer.IsValidLogFileName(string.Empty));
 
             StringAssert.Contains(ExceptionMessage.FileNameHasToBeProvided, exception.Message);
         }
@@ -40,7 +36,9 @@ namespace Week4_UnitTest_LogAnalyzer.Tests
         [Category("Ignoring Test")]
         public void IsValidLogFileName_ValidExtensionLowerCase_ReturnTrue()
         {
-            bool actual = _logAnalyzer.IsValidLogFileName("filewithgoodextension.slf");
+            LogAnalyzer logAnalyzer = MakeLogAnalyzer();
+
+            bool actual = logAnalyzer.IsValidLogFileName("filewithgoodextension.slf");
 
             Assert.That(actual, Is.True);
         }
@@ -51,15 +49,16 @@ namespace Week4_UnitTest_LogAnalyzer.Tests
         [Category("State-based Test")]
         public void IsValidLogFileName_WhenCalled_ChangeWasLastFileNameValid(string file, bool expected)
         {
-            _logAnalyzer.IsValidLogFileName(file);
+            LogAnalyzer logAnalyzer = MakeLogAnalyzer();
 
-            Assert.AreEqual(expected, _logAnalyzer.WasLastFileNameValid);
+            logAnalyzer.IsValidLogFileName(file);
+
+            Assert.AreEqual(expected, logAnalyzer.WasLastFileNameValid);
         }
 
-        [OneTimeTearDown]
-        public void TearDown()
+        static LogAnalyzer MakeLogAnalyzer()
         {
-            _logAnalyzer = null;
+            return new LogAnalyzer();
         }
     }
 }
