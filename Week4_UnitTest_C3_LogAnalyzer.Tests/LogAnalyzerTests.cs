@@ -51,6 +51,19 @@ namespace Week4_UnitTest_C3_LogAnalyzer.Tests
             bool result = logAnalyzer.IsValidLogFileName("fileName.ext");
             Assert.True(result);
         }
+
+        [Test]
+        [Category("UnitTest_C3_LogAnalyzerUseFactoryMethod_S351")]
+        public void OverrideTestWithoutStub()
+        {
+            TestableLogAnalyzerSection351 logAnalyzer = new TestableLogAnalyzerSection351
+            {
+                IsSupported = true,
+            };
+
+            bool result = logAnalyzer.IsValidLogFileName("fileName.ext");
+            Assert.True(result);
+        }
     }
 
     [TestFixture]
@@ -149,6 +162,16 @@ namespace Week4_UnitTest_C3_LogAnalyzer.Tests
         protected override IExtensionManager GetExtensionManager()
         {
             return _extensionManager;
+        }
+    }
+
+    class TestableLogAnalyzerSection351 : LogAnalyzerSection351
+    {
+        public bool IsSupported { get; set; }
+
+        protected override bool IsValid(string fileName)
+        {
+            return IsSupported;
         }
     }
 

@@ -87,4 +87,19 @@
             return new FileExtensionManager();
         }
     }
+
+    public class LogAnalyzerSection351
+    {
+        public bool IsValidLogFileName(string fileName)
+        {
+            return IsValid(fileName);
+        }
+
+        protected virtual bool IsValid(string fileName)
+        {
+            FileExtensionManager fileExtensionManger = new FileExtensionManager();
+
+            return fileExtensionManger.IsValid(fileName);
+        }
+    }
 }
