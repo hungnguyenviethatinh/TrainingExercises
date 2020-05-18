@@ -1,0 +1,13 @@
+* {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #76acfc;
+    color: #ffffff;
+    font-family: Arial, 'Segoe UI', Tahoma;
+    font-size: 13pt;
+    margin: 0;
+    padding: 0;
+}

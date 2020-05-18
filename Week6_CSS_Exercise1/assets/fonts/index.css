@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Arial"), url("ARIAL.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Arial Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Arial Italic"), url("ARIALI 1.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Arial Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Arial Italic"), url("ARIALI.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Arial Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Arial Bold"), url("ARIALBD 1.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Arial Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Arial Bold"), url("ARIALBD.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI"), url("Segoe UI.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Segoe UI Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Italic"), url("Segoe UI Italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Segoe UI Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Bold"), url("Segoe UI Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Segoe UI Bold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Segoe UI Bold Italic"),
+    url("Segoe UI Bold Italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Tahoma";
+  src: local("Tahoma"), url("Tahoma.eot");
+  src: local("Tahoma"), url("Tahoma.woff") format("woff"),
+    url("Tahoma.ttf") format("truetype"), url("Tahoma.svg#Tahoma") format("svg"),
+    url("Tahoma.eot?#iefix") format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}
