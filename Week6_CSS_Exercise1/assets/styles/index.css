@@ -1,13 +1,84 @@
 * {
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #76acfc;
-    color: #ffffff;
-    font-family: Arial, 'Segoe UI', Tahoma;
-    font-size: 13pt;
-    margin: 0;
-    padding: 0;
+  background-color: #76acfc;
+  color: #ffffff;
+  font-family: Arial, "Segoe UI", Tahoma;
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px 160px 160px;
+}
+
+.top {
+  width: 100%;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.heading {
+  font-size: 24px;
+  text-transform: capitalize;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.middle {
+  width: 100%;
+  height: 200px;
+  justify-content: space-between;
+}
+
+.col-left {
+    width: 100%;
+    max-width: 400px;
+}
+
+input[type="text"] {
+    height: 40px;
+    width: 160px;
+    color: #a6a6a6;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+    border-radius: 3px;
+}
+
+textarea {
+    height: 150px;
+}
+
+.bottom {
+  width: 100%;
+}
+
+.map-img {
+  width: 100%;
+  max-width: 960px;
+  height: auto;
 }
