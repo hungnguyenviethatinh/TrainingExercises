@@ -1,0 +1,39 @@
+@media screen and (max-width: 575.98px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .col-left {
+    max-width: max-content;
+    margin-bottom: 45px;
+  }
+
+  .col-right {
+    max-width: max-content;
+    padding-left: 0;
+  }
+
+  form#sendEmailForm {
+    width: 100%;
+  }
+
+  form#sendEmailForm .form-left {
+    width: 100%;
+  }
+
+  form#sendEmailForm .form-right {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  button.submit-button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1279.98px) {
+  .middle {
+    height: auto;
+  }
+}

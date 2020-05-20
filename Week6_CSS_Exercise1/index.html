@@ -11,6 +11,7 @@
     <meta name="author" content="Nguyen Viet Hung" />
     <link rel="stylesheet" href="assets/fonts/index.css" />
     <link rel="stylesheet" href="assets/styles/index.css" />
+    <link rel="stylesheet" href="assets/styles/reponsive.css">
 
     <title>Week 6 CSS Exercise 1</title>
 </head>
@@ -28,27 +29,35 @@
                     soldales quis, placerat ullamcorper nisl. Donec pulvinar, arcu vel rhoncus
                     commodo, neque lectus blandit elit, vel iaculis odio lectus sit amet metus.
                 </p>
-                <div class="information">
-                    <a href="tel: 1 (808) 350-1688">1 (808) 350-1688</a>
-                    <a href="mailto: support@yoursite.com">support@yoursite.com</a>
-                    <a href="https://www.google.com/maps" rel="noopener noreferrer" target="_blank">1600 Amphitheatre
-                        Parkway, Mountain View, CA 94043</a>
+                <div class="row contact">
+                    <a href="tel: 1 (808) 350-1688">
+                        <em class="icon phone-icon"></em>
+                        1 (808) 350-1688
+                    </a>
+                    <a href="mailto: support@yoursite.com">
+                        <em class="icon envelope-icon"></em>
+                        support@yoursite.com
+                    </a>
+                    <a href="https://www.google.com/maps" rel="noopener noreferrer" target="_blank">
+                        <em class="icon sitemark-icon"></em>
+                        1600 Amphitheatre Parkway, Mountain View, CA 94043</a>
                 </div>
             </div>
             <div class="col-right">
-                <form>
-                    <div class="row">
-                        <div class="col">
+                <form id="sendEmailForm">
+                    <div class="row form-group">
+                        <div class="form-left">
                             <input type="text" name="name" id="yourName" placeholder="Your Name" />
                             <input type="text" name="email" id="yourEmail" placeholder="Your Email" />
                             <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" />
                         </div>
-                        <div class="col">
-                            <textarea name="message" id="yourMessage" cols="30" rows="10"></textarea>
+                        <div class="form-right">
+                            <textarea name="message" id="yourMessage" cols="30" rows="10"
+                                placeholder="Your Message"></textarea>
                         </div>
                     </div>
-                    <div class="row">
-                        <button type="submit" class="button">Send Email</button>
+                    <div class="row form-bottom">
+                        <button type="submit" class="submit-button">Send Email</button>
                     </div>
                 </form>
             </div>
