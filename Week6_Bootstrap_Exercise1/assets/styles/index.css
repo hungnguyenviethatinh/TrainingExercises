@@ -1,0 +1,158 @@
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #76acfc;
+  color: #ffffff;
+  font-family: Arial, "Segoe UI", Tahoma;
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 50px 12.5% 12.5%;
+}
+
+.top {
+  width: 100%;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.heading {
+  font-size: 24px;
+  text-transform: capitalize;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 2;
+}
+
+.middle {
+  width: 100%;
+  height: 200px;
+  justify-content: space-between;
+  margin-bottom: 45px;
+}
+
+.col-left {
+  width: 100%;
+  max-width: 41.667%;
+}
+
+.col-right {
+  width: 100%;
+  max-width: 56.25%;
+  padding-left: 5.208%;
+}
+
+form#sendEmailForm {
+  width: 100%;
+}
+
+form#sendEmailForm .form-group {
+  justify-content: space-between;
+}
+
+form#sendEmailForm .form-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 150px;
+  width: 32.653%;
+}
+
+input[type="text"] {
+  height: 45px;
+  width: 100%;
+  color: #a6a6a6;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: none;
+  border-radius: 3px;
+}
+
+form#sendEmailForm .form-right {
+  justify-content: space-between;
+  height: 150px;
+  width: 65.51%;
+}
+
+textarea#yourMessage {
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  padding: 15px;
+  color: #a6a6a6;
+  font-family: Arial, "Segoe UI", Tahoma;
+}
+
+.contact {
+  margin-top: 15px;
+}
+
+.contact > a {
+  color: #ffffff;
+  margin-top: 15px;
+}
+
+.contact > a:first-child {
+  text-decoration: none;
+  margin-right: 30px;
+}
+
+.contact > a:last-child {
+  text-decoration: none;
+}
+
+.icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 8px 0 0;
+}
+
+.phone-icon {
+  background: url("../images/phone-alt-solid.svg") no-repeat;
+}
+
+.envelope-icon {
+  background: url("../images/envelope-regular.svg") no-repeat;
+}
+
+.sitemark-icon {
+  background: url("../images/map-marker-alt-solid.svg") no-repeat;
+}
+
+form#sendEmailForm .form-bottom {
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+button.submit-button {
+  height: 40px;
+  width: 120px;
+  background-color: #64ce83;
+  color: #ffffff;
+  border-radius: 3px;
+  border: 1px solid #3dc264;
+}
+
+.bottom {
+  width: 100%;
+}
+
+.map-img {
+  width: 100%;
+  height: auto;
+}
