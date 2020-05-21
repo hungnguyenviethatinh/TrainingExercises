@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Proxima Nova";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Proxima Nova"), url("Proxima-Nova-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Proxima Nova Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Proxima Nova Light"),
+    url("Proxima-Nova-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Proxima Nova Alt Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Proxima Nova Alt Light"),
+    url("Proxima_Nova_Alt_Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Proxima Nova Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Proxima Nova Bold"),
+    url("Proxima-Nova-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Tahoma";
+  src: local("Tahoma"), url("Tahoma.eot");
+  src: local("Tahoma"), url("Tahoma.woff") format("woff"),
+    url("Tahoma.ttf") format("truetype"), url("Tahoma.svg#Tahoma") format("svg"),
+    url("Tahoma.eot?#iefix") format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}

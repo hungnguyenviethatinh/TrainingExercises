@@ -1,0 +1,11 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  font-family: Tahoma;
+  margin: 0;
+  padding: 0;
+}
