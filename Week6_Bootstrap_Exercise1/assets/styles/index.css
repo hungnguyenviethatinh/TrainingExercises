@@ -12,7 +12,8 @@ body {
 }
 
 .container {
-  padding: 50px 12.5% 12.5%;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .top {
@@ -37,38 +38,8 @@ p {
   line-height: 2;
 }
 
-.middle {
-  width: 100%;
-  height: 200px;
-  justify-content: space-between;
-  margin-bottom: 45px;
-}
-
-.col-left {
-  width: 100%;
-  max-width: 41.667%;
-}
-
-.col-right {
-  width: 100%;
-  max-width: 56.25%;
-  padding-left: 5.208%;
-}
-
-form#sendEmailForm {
-  width: 100%;
-}
-
-form#sendEmailForm .form-group {
-  justify-content: space-between;
-}
-
-form#sendEmailForm .form-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+form#sendEmailForm .contact {
   height: 150px;
-  width: 32.653%;
 }
 
 input[type="text"] {
@@ -81,10 +52,8 @@ input[type="text"] {
   border-radius: 3px;
 }
 
-form#sendEmailForm .form-right {
-  justify-content: space-between;
+form#sendEmailForm .message {
   height: 150px;
-  width: 65.51%;
 }
 
 textarea#yourMessage {
@@ -95,24 +64,6 @@ textarea#yourMessage {
   padding: 15px;
   color: #a6a6a6;
   font-family: Arial, "Segoe UI", Tahoma;
-}
-
-.contact {
-  margin-top: 15px;
-}
-
-.contact > a {
-  color: #ffffff;
-  margin-top: 15px;
-}
-
-.contact > a:first-child {
-  text-decoration: none;
-  margin-right: 30px;
-}
-
-.contact > a:last-child {
-  text-decoration: none;
 }
 
 .icon {
@@ -132,11 +83,6 @@ textarea#yourMessage {
 
 .sitemark-icon {
   background: url("../images/map-marker-alt-solid.svg") no-repeat;
-}
-
-form#sendEmailForm .form-bottom {
-  justify-content: flex-end;
-  margin-top: 10px;
 }
 
 button.submit-button {

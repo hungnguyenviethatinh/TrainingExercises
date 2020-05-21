@@ -1,71 +1,106 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Week 6 CSS Exercise 1" />
     <meta name="keywords" content="HTML, CSS" />
     <meta name="author" content="Nguyen Viet Hung" />
-    <link rel="stylesheet" href="assets/styles/bootstrap.css">
+    <link rel="stylesheet" href="assets/styles/bootstrap.css" />
     <link rel="stylesheet" href="assets/fonts/index.css" />
     <link rel="stylesheet" href="assets/styles/index.css" />
+    <link rel="stylesheet" href="assets/styles/responsive.css" />
 
     <title>Week 6 Bootstrap Exercise 1</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="top">
-            <h3 class="heading">Get In Touch</h3>
-            <p>Just an example description for this section</p>
+      <div class="top">
+        <h3 class="heading">Get In Touch</h3>
+        <p>Just an example description for this section</p>
+      </div>
+      <div class="row justify-content-between h-auto mb-5">
+        <div class="col-sm-12 col-md-5 mb-4 mb-md-0 pr-md-0">
+          <p>
+            Nam ultricies aliquam imperdiet. Pellentesque massa dul, varius non
+            soldales quis, placerat ullamcorper nisl. Donec pulvinar, arcu vel
+            rhoncus commodo, neque lectus blandit elit, vel iaculis odio lectus
+            sit amet metus.
+          </p>
+          <div class="row ml-0 mr-0">
+            <a
+              href="tel: 1 (808) 350-1688"
+              class="text-decoration-none text-white mr-3 mb-2"
+            >
+              <em class="icon phone-icon"></em>
+              1 (808) 350-1688
+            </a>
+            <a href="mailto: support@yoursite.com" class="text-white mb-2">
+              <em class="icon envelope-icon"></em>
+              support@yoursite.com
+            </a>
+            <a
+              href="https://www.google.com/maps"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="text-decoration-none text-white mb-2"
+            >
+              <em class="icon sitemark-icon"></em>
+              1600 Amphitheatre Parkway, Mountain View, CA 94043</a
+            >
+          </div>
         </div>
-        <div class="row middle">
-            <div class="col-left">
-                <p>
-                    Nam ultricies aliquam imperdiet. Pellentesque massa dul, varius non
-                    soldales quis, placerat ullamcorper nisl. Donec pulvinar, arcu vel rhoncus
-                    commodo, neque lectus blandit elit, vel iaculis odio lectus sit amet metus.
-                </p>
-                <div class="row contact">
-                    <a href="tel: 1 (808) 350-1688">
-                        <em class="icon phone-icon"></em>
-                        1 (808) 350-1688
-                    </a>
-                    <a href="mailto: support@yoursite.com">
-                        <em class="icon envelope-icon"></em>
-                        support@yoursite.com
-                    </a>
-                    <a href="https://www.google.com/maps" rel="noopener noreferrer" target="_blank">
-                        <em class="icon sitemark-icon"></em>
-                        1600 Amphitheatre Parkway, Mountain View, CA 94043</a>
-                </div>
+        <div class="col-sm-12 col-md-7 pl-md-5">
+          <form id="sendEmailForm">
+            <div class="row justify-content-between">
+              <div
+                class="col-sm-12 col-md-4 d-flex flex-column justify-content-between pr-md-1 contact"
+              >
+                <input
+                  type="text"
+                  name="name"
+                  id="yourName"
+                  placeholder="Your Name"
+                />
+                <input
+                  type="text"
+                  name="email"
+                  id="yourEmail"
+                  placeholder="Your Email"
+                />
+                <input
+                  type="text"
+                  name="phoneNumber"
+                  id="phoneNumber"
+                  placeholder="Phone Number"
+                />
+              </div>
+              <div
+                class="col-sm-12 col-md-8 justify-content-between mt-2 mt-md-0 pl-md-1 message"
+              >
+                <textarea
+                  name="message"
+                  id="yourMessage"
+                  cols="30"
+                  rows="10"
+                  placeholder="Your Message"
+                ></textarea>
+              </div>
             </div>
-            <div class="col-right">
-                <form id="sendEmailForm">
-                    <div class="row form-group">
-                        <div class="form-left">
-                            <input type="text" name="name" id="yourName" placeholder="Your Name" />
-                            <input type="text" name="email" id="yourEmail" placeholder="Your Email" />
-                            <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" />
-                        </div>
-                        <div class="form-right">
-                            <textarea name="message" id="yourMessage" cols="30" rows="10"
-                                placeholder="Your Message"></textarea>
-                        </div>
-                    </div>
-                    <div class="row form-bottom">
-                        <button type="submit" class="submit-button">Send Email</button>
-                    </div>
-                </form>
+            <div class="row mt-3">
+              <div class="col-12 d-flex justify-content-end">
+                <button type="submit" class="submit-button">Send Email</button>
+              </div>
             </div>
+          </form>
         </div>
-        <div class="bottom">
-            <img src="assets/images/map.png" class="map-img" alt="Map" />
-        </div>
+      </div>
+      <div class="bottom">
+        <img src="assets/images/map.png" class="map-img" alt="Map" />
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
