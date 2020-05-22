@@ -1,0 +1,80 @@
+@media screen and (max-width: 575.98px) {
+  .header {
+    position: static;
+    height: auto;
+  }
+
+  .navbar {
+    flex-flow: column nowrap;
+  }
+  
+  .navbar-nav {
+    flex-flow: column nowrap;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0px 10px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .navbar-nav > .nav-item {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #cccccc;
+  }
+
+  a.button-demo {
+    width: calc(100% - 20px);
+  }
+
+  .content-wrap {
+    height: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .icd-article {
+    height: auto;
+    padding: 0px 0px 20px;
+  }
+
+  .article {
+    flex-grow: 0;
+  }
+
+  .article .title {
+    font-size: 13.75px;
+  }
+
+  .article .brief-content {
+    font-size: 11.75px;
+    line-height: 2;
+  }
+
+  .view-link a {
+    font-size: 10px;
+  }
+
+  .content h1 {
+    font-size: 21px;
+  }
+
+  .content h3 {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .subscription {
+    flex-flow: column nowrap;
+    padding: 0 10px;
+  }
+
+  .subscription-text {
+    font-size: 15px;
+  }
+
+  .input-group {
+    width: 100%;
+  }
+}
