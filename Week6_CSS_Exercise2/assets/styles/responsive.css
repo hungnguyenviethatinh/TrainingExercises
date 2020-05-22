@@ -67,6 +67,10 @@
     font-size: 10px;
   }
 
+  .content {
+    width: 100%;
+  }
+
   .content h1 {
     font-size: 21px;
   }
