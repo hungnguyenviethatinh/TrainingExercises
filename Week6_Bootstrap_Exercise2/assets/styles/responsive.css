@@ -7,7 +7,7 @@
   .navbar {
     flex-flow: column nowrap;
   }
-  
+
   .navbar-nav {
     flex-flow: column nowrap;
     margin-left: 0;
