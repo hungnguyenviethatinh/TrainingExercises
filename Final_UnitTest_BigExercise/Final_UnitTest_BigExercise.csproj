@@ -52,6 +52,10 @@
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="StructureMap, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StructureMap.4.7.1\lib\net45\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
@@ -128,6 +132,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Interfaces\ILogger.cs" />
+    <Compile Include="Common\Logger.cs" />
+    <Compile Include="Core\HtmlParser.cs" />
+    <Compile Include="Core\Interfaces\IHtmlParser.cs" />
+    <Compile Include="Core\Interfaces\IWebReader.cs" />
+    <Compile Include="Core\Interfaces\IResultWriter.cs" />
+    <Compile Include="Core\ResultWriter.cs" />
+    <Compile Include="Core\WebReader.cs" />
+    <Compile Include="DependencyRegistration.cs" />
+    <Compile Include="Handler.cs" />
+    <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="IHandler.cs" />
+    <Compile Include="Models\Result.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -141,6 +158,7 @@
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.7.0.17535\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.7.0.17535\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
