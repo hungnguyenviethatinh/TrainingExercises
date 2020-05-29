@@ -26,12 +26,8 @@ namespace Final_UnitTest_BigExercise
         {
             try
             {
-                // test code
-                Console.WriteLine("Run called.");
-                int a = 1;
-                int b = 0;
-                int c = a / b;
-                Console.WriteLine($"{c}");
+                var result = GetUserWithLikes(threadUrl);
+                _resultWriter.WriteToFile(result, outputPath);
             }
             catch (Exception exception)
             {
@@ -56,12 +52,60 @@ namespace Final_UnitTest_BigExercise
             }
         }
 
-        IDictionary<string, int> GetUserWithLikes(string threadUrl)
+        IDictionary<string, int> GetUserWithLikes(string threadUrl, int pageCount = 3, int page = 1)
         {
             IDictionary<string, int> result = new Dictionary<string, int>();
+            if (page > pageCount)
+            {
+                return result;
+            }
 
-            // execution code here.
+            string url = $"{threadUrl}page-{page}";
+            var threadPageSource = _webReader.Read(url);
+            //int pageCount = _htmlParser.GetPageCount(threadPageSource);
 
+            var posts = _htmlParser.GetPosts(threadPageSource);
+            foreach (var post in posts)
+            {
+                string userName = _htmlParser.GetUserNamePerPost(post);
+                string reactionLink = _htmlParser.GetReactionLinkPerPost(post);
+                if (!string.IsNullOrEmpty(reactionLink))
+                {
+                    var postReactionPageSource = _webReader.Read(reactionLink);
+                    int reactionCount = _htmlParser.GetReactionCountPerPost(postReactionPageSource);
+                    if (!result.ContainsKey(userName))
+                    {
+                        result.Add(userName, reactionCount);
+                    }
+                    else
+                    {
+                        result[userName] += reactionCount;
+                    }
+                }
+                else
+                {
+                    if (!result.ContainsKey(userName))
+                    {
+                        result.Add(userName, 0);
+                    }
+                }
+
+            }
+
+            int nextPage = page + 1;
+            var nextPageResult = GetUserWithLikes(threadUrl, pageCount, nextPage);
+            foreach(var item in nextPageResult)
+            {
+                if (!result.ContainsKey(item.Key))
+                {
+                    result.Add(item);
+                }
+                else
+                {
+                    result[item.Key] += item.Value;
+                }
+            }
+            
             return result;
         }
 
@@ -74,17 +118,17 @@ namespace Final_UnitTest_BigExercise
             return result;
         }
 
-        void WriteResultToFile(IDictionary<string, int> result, string path)
+        void WriteResultToFile(IDictionary<string, int> result, string outputPath)
         {
-            _resultWriter.WriteToFile(result, path);
+            _resultWriter.WriteToFile(result, outputPath);
         }
 
-        HtmlNode GetThread(string threadUrl)
+        HtmlNode GetThreadPageSource(string threadUrl)
         {
             return _webReader.Read(threadUrl);
         }
 
-        async Task<HtmlNode> GetThreadAsync(string threadUrl)
+        async Task<HtmlNode> GetThreadPageSourceAsync(string threadUrl)
         {
             return await _webReader.ReadAsync(threadUrl);
         }
