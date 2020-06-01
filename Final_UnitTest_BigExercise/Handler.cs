@@ -1,9 +1,9 @@
 ﻿using Final_UnitTest_BigExercise.Common.Interfaces;
 using Final_UnitTest_BigExercise.Core.Interfaces;
-using HtmlAgilityPack;
+using Final_UnitTest_BigExercise.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace Final_UnitTest_BigExercise
 {
@@ -22,11 +22,29 @@ namespace Final_UnitTest_BigExercise
             _resultWriter = resultWriter;
         }
 
-        public void Run(string threadUrl, string outputPath)
+        public IDictionary<string, int> GetUserLike(string threadUrl)
         {
             try
             {
-                var result = GetUserWithLikes(threadUrl);
+                int pageCount = 5; // GetPageCount(threadUrl);
+                var result = GetUserLike(threadUrl, pageCount, 1);
+
+                return result
+                    .OrderByDescending(pair => pair.Value)
+                    .ToDictionary(pair => pair.Key, pair => pair.Value);
+            }
+            catch (Exception exception)
+            {
+                _logger.Log(exception.Message);
+            }
+
+            return new Dictionary<string, int>();
+        }
+
+        public void WriteResult(IDictionary<string, int> result, string outputPath)
+        {
+            try
+            {
                 _resultWriter.WriteToFile(result, outputPath);
             }
             catch (Exception exception)
@@ -35,24 +53,15 @@ namespace Final_UnitTest_BigExercise
             }
         }
 
-        public async Task RunAsync(string threadUrl, string outputPath)
+        int GetPageCount(string threadUrl)
         {
-            try
-            {
-                // test code
-                Console.WriteLine("RunAsync called.");
-                int a = 1;
-                int b = 0;
-                int c = a / b;
-                Console.WriteLine($"{c}");
-            }
-            catch (Exception exception)
-            {
-                _logger.Log(exception.Message);
-            }
+            var threadPageSource = _webReader.Read(threadUrl);
+            int pageCount = _htmlParser.GetPageCount(threadPageSource);
+
+            return pageCount;
         }
 
-        IDictionary<string, int> GetUserWithLikes(string threadUrl, int pageCount = 3, int page = 1)
+        IDictionary<string, int> GetUserLike(string threadUrl, int pageCount, int page)
         {
             IDictionary<string, int> result = new Dictionary<string, int>();
             if (page > pageCount)
@@ -62,7 +71,6 @@ namespace Final_UnitTest_BigExercise
 
             string url = $"{threadUrl}page-{page}";
             var threadPageSource = _webReader.Read(url);
-            //int pageCount = _htmlParser.GetPageCount(threadPageSource);
 
             var posts = _htmlParser.GetPosts(threadPageSource);
             foreach (var post in posts)
@@ -73,64 +81,18 @@ namespace Final_UnitTest_BigExercise
                 {
                     var postReactionPageSource = _webReader.Read(reactionLink);
                     int reactionCount = _htmlParser.GetReactionCountPerPost(postReactionPageSource);
-                    if (!result.ContainsKey(userName))
-                    {
-                        result.Add(userName, reactionCount);
-                    }
-                    else
-                    {
-                        result[userName] += reactionCount;
-                    }
+
+                    result.AddPair(userName, reactionCount);
                 }
                 else
                 {
-                    if (!result.ContainsKey(userName))
-                    {
-                        result.Add(userName, 0);
-                    }
-                }
-
-            }
-
-            int nextPage = page + 1;
-            var nextPageResult = GetUserWithLikes(threadUrl, pageCount, nextPage);
-            foreach(var item in nextPageResult)
-            {
-                if (!result.ContainsKey(item.Key))
-                {
-                    result.Add(item);
-                }
-                else
-                {
-                    result[item.Key] += item.Value;
+                    result.AddPair(userName, 0);
                 }
             }
-            
-            return result;
-        }
 
-        async Task<IDictionary<string, int>> GetUserWithLikesAsync(string threadUrl)
-        {
-            IDictionary<string, int> result = new Dictionary<string, int>();
+            var nextPageResult = GetUserLike(threadUrl, pageCount, page + 1);
 
-            // execution code here.
-
-            return result;
-        }
-
-        void WriteResultToFile(IDictionary<string, int> result, string outputPath)
-        {
-            _resultWriter.WriteToFile(result, outputPath);
-        }
-
-        HtmlNode GetThreadPageSource(string threadUrl)
-        {
-            return _webReader.Read(threadUrl);
-        }
-
-        async Task<HtmlNode> GetThreadPageSourceAsync(string threadUrl)
-        {
-            return await _webReader.ReadAsync(threadUrl);
+            return result.Merge(nextPageResult);
         }
     }
 }

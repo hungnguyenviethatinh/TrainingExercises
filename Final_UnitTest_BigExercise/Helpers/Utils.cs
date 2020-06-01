@@ -15,5 +15,27 @@ namespace Final_UnitTest_BigExercise.Helpers
         {
             return node.QuerySelectorAll(selector);
         }
+
+        public static IDictionary<string, int> Merge(this IDictionary<string, int> destination, IDictionary<string, int> source)
+        {
+            foreach (var pair in source)
+            {
+                destination.AddPair(pair.Key, pair.Value);
+            }
+
+            return destination;
+        }
+
+        public static void AddPair(this IDictionary<string, int> destination, string key, int value)
+        {
+            if (!destination.ContainsKey(key))
+            {
+                destination.Add(key, value);
+            }
+            else
+            {
+                destination[key] += value;
+            }
+        }
     }
 }

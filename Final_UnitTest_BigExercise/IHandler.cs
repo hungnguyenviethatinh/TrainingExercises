@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Final_UnitTest_BigExercise
 {
     public interface IHandler
     {
-        void Run(string threadUrl, string outputPath);
-        Task RunAsync(string threadUrl, string outputPath);
+        IDictionary<string, int> GetUserLike(string threadUrl);
+        void WriteResult(IDictionary<string, int> result, string outputPath);
     }
 }

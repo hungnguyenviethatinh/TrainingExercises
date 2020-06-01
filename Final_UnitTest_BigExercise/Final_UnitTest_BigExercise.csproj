@@ -142,6 +142,7 @@
     <Compile Include="Core\WebReader.cs" />
     <Compile Include="DependencyRegistration.cs" />
     <Compile Include="Handler.cs" />
+    <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\Utils.cs" />
     <Compile Include="IHandler.cs" />
     <Compile Include="Models\Result.cs" />
