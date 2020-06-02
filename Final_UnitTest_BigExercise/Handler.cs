@@ -26,7 +26,7 @@ namespace Final_UnitTest_BigExercise
         {
             try
             {
-                int pageCount = 5; // GetPageCount(threadUrl);
+                int pageCount = GetPageCount(threadUrl);
                 var result = GetUserLike(threadUrl, pageCount, 1);
 
                 return result
