@@ -10,8 +10,7 @@ namespace Final_UnitTest_BigExercise
             var container = Container.For<DependencyRegistration>();
             var handler = container.GetInstance<IHandler>();
 
-            //string threadUrl = "https://www.otosaigon.com/threads/camry-8x9x-and-more.4916883/";
-            string threadUrl = "https://www.abc.com/";
+            string threadUrl = "https://www.otosaigon.com/threads/camry-8x9x-and-more.4916883/";
             string outputPath = "result.txt";
 
             Console.WriteLine($"Getting a list of user and likes from {threadUrl}");

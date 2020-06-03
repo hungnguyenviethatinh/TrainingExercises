@@ -1,5 +1,6 @@
 ﻿using Final_UnitTest_BigExercise.Core;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace Final_UnitTest_BigExercise.Tests
@@ -77,6 +78,32 @@ namespace Final_UnitTest_BigExercise.Tests
             };
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase(@"d:\test\test.txt")]
+        [Category("3. ResultWriterTests_WriteToFile")]
+        public void WriteToFile_NonExistPath_Throws(string path)
+        {
+            var resultWriter = new ResultWriter();
+
+            var result = new Dictionary<string, int>();
+
+            var exception = Assert.Catch<Exception>(() => resultWriter.WriteToFile(result, path));
+
+            StringAssert.Contains($"Could not find a part of the path '{path}'", exception.Message);
+        }
+
+        [TestCase(@"c:\test.txt")]
+        [Category("3. ResultWriterTests_WriteToFile")]
+        public void WriteToFile_NoAccessPermission_Throws(string path)
+        {
+            var resultWriter = new ResultWriter();
+
+            var result = new Dictionary<string, int>();
+
+            var exception = Assert.Catch<Exception>(() => resultWriter.WriteToFile(result, path));
+
+            StringAssert.Contains($"Access to the path '{path}' is denied", exception.Message);
         }
     }
 }

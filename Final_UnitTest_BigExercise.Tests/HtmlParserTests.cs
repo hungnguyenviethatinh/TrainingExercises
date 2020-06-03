@@ -11,7 +11,7 @@ namespace Final_UnitTest_BigExercise.Tests
         [TestCase(@"Resources\8973018\page-1", 3)]
         [TestCase(@"Resources\8973162\page-1", 2)]
         [TestCase(@"Resources\false-case", 1)]
-        [Category("2. HtmlParserTests_GetPageCount")]
+        [Category("2.1 HtmlParserTests_GetPageCount")]
         public void GetPageCount_NotNullThreadPageSource_ReturnAnInteger(string file, int expected)
         {
             var htmlParser = new HtmlParser();
@@ -25,7 +25,7 @@ namespace Final_UnitTest_BigExercise.Tests
         }
 
         [Test]
-        [Category("2. HtmlParserTests_GetPageCount")]
+        [Category("2.1 HtmlParserTests_GetPageCount")]
         public void GetPageCount_NullThreadPageSource_Throws()
         {
             var htmlParser = new HtmlParser();
@@ -46,7 +46,7 @@ namespace Final_UnitTest_BigExercise.Tests
         [TestCase(@"Resources\8973162\page-1", 10)]
         [TestCase(@"Resources\8973162\page-2", 3)]
         [TestCase(@"Resources\false-case", 0)]
-        [Category("2. HtmlParserTests_GetPosts")]
+        [Category("2.2 HtmlParserTests_GetPosts")]
         public void GetPosts_NotNullThreadPageSource_ReturnAnArray(string file, int expected)
         {
             var htmlParser = new HtmlParser();
@@ -61,7 +61,7 @@ namespace Final_UnitTest_BigExercise.Tests
         }
 
         [Test]
-        [Category("2. HtmlParserTests_GetPosts")]
+        [Category("2.2 HtmlParserTests_GetPosts")]
         public void GetPosts_NullThreadPageSource_Throws()
         {
             var htmlParser = new HtmlParser();
@@ -81,7 +81,7 @@ namespace Final_UnitTest_BigExercise.Tests
         [TestCase(7, "https://www.otosaigon.com/posts/4920068/reactions")]
         [TestCase(8, "https://www.otosaigon.com/posts/4920235/reactions")]
         [TestCase(9, "https://www.otosaigon.com/posts/4920336/reactions")]
-        [Category("2. HtmlParserTests_GetReactionLinkPerPost")]
+        [Category("2.3 HtmlParserTests_GetReactionLinkPerPost")]
         public void GetReactionLinkPerPost_NotNullPostNode_ReturnAString(int postIndex, string expected)
         {
             var htmlParser = new HtmlParser();
@@ -97,7 +97,7 @@ namespace Final_UnitTest_BigExercise.Tests
         }
 
         [Test]
-        [Category("2. HtmlParserTests_GetReactionLinkPerPost")]
+        [Category("2.3 HtmlParserTests_GetReactionLinkPerPost")]
         public void GetReactionLinkPerPost_NullPostNode_Throws()
         {
             var htmlParser = new HtmlParser();
@@ -117,7 +117,7 @@ namespace Final_UnitTest_BigExercise.Tests
         [TestCase(7, "kysutach")]
         [TestCase(8, "gogomymy")]
         [TestCase(9, "truong5779")]
-        [Category("2. HtmlParserTests_GetUserNamePerPost")]
+        [Category("2.4 HtmlParserTests_GetUserNamePerPost")]
         public void GetUserNamePerPost_NotNullPostNode_ReturnAString(int postIndex, string expected)
         {
             var htmlParser = new HtmlParser();
@@ -133,7 +133,7 @@ namespace Final_UnitTest_BigExercise.Tests
         }
 
         [Test]
-        [Category("2. HtmlParserTests_GetUserNamePerPost")]
+        [Category("2.4 HtmlParserTests_GetUserNamePerPost")]
         public void GetUserNamePerPost_NullPostNode_Throws()
         {
             var htmlParser = new HtmlParser();
@@ -147,7 +147,7 @@ namespace Final_UnitTest_BigExercise.Tests
         [TestCase(@"Resources\4916883\reaction-2", 3)]
         [TestCase(@"Resources\4916883\reaction-3", 1)]
         [TestCase(@"Resources\false-case", 0)]
-        [Category("2. HtmlParserTests_GetReactionCountPerPost")]
+        [Category("2.5 HtmlParserTests_GetReactionCountPerPost")]
         public void GetReactionCountPerPost_NotNullPostReactionPageSource_ReturnAnInteger(string file, int expected)
         {
             var htmlParser = new HtmlParser();
@@ -161,7 +161,7 @@ namespace Final_UnitTest_BigExercise.Tests
         }
 
         [Test]
-        [Category("2. HtmlParserTests_GetReactionCountPerPost")]
+        [Category("2.5 HtmlParserTests_GetReactionCountPerPost")]
         public void GetReactionCountPerPost_NullPostReactionPageSource_Throws()
         {
             var htmlParser = new HtmlParser();

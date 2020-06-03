@@ -37,6 +37,31 @@ namespace Final_UnitTest_BigExercise.Tests
             return nodes.ElementAt(index);
         }
 
+        public static HtmlNode CreatePageSource(int index)
+        {
+            return new HtmlNode(HtmlNodeType.Document, new HtmlDocument(), index)
+            {
+                Name = $"document-{index}"
+            };
+        }
+
+        public static IEnumerable<HtmlNode> CreatePosts(int postCount)
+        {
+            var posts = new List<HtmlNode>();
+
+            for (int index = 0; index < postCount; index++)
+            {
+                var post = new HtmlNode(HtmlNodeType.Element, new HtmlDocument(), index)
+                {
+                    Name = $"article-{index}"
+                };
+
+                posts.Add(post);
+            }
+
+            return posts;
+        }
+
         public static bool FileExists(string file)
         {
             return File.Exists(file);
@@ -54,6 +79,17 @@ namespace Final_UnitTest_BigExercise.Tests
             var lines = File.ReadLines(file);
 
             return lines.ToArray();
+        }
+
+        public static void WriteToFile(IDictionary<string, int> result, string path)
+        {
+            using (StreamWriter writer = new StreamWriter(path, false))
+            {
+                foreach (var pair in result)
+                {
+                    writer.WriteLine($"{pair.Key}: {pair.Value}");
+                }
+            }
         }
     }
 }

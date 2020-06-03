@@ -41,9 +41,9 @@ namespace Final_UnitTest_BigExercise.Tests
             Assert.Throws<UriFormatException>(() => webReader.Read(url));
         }
 
-        [TestCase("https://www.otosaigon.com/non-exist")]
+        [TestCase("https://www.otosaigon.com/non-exist-page")]
         [Category("1. WebReaderTests_Read")]
-        public void Read_NonExistUrl_Throws(string url)
+        public void Read_Errors_Throws(string url)
         {
             var webReader = new WebReader();
 
