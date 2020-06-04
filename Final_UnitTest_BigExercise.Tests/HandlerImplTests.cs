@@ -1,5 +1,4 @@
 ﻿using FinalUnitTestBigExercise.Core.Interfaces;
-using HtmlAgilityPack;
 using NSubstitute;
 using NUnit.Framework;
 using System;
@@ -42,35 +41,23 @@ namespace FinalUnitTestBigExercise.Tests
                     .GetUserNamePerPost(post)
                     .Returns($"username-{index}");
 
-                var postReactionPageSource = Helpers.CreatePageSource(index + 1);
+                string reactionLink = string.Empty;
                 if (index != 6 && index != 9)
                 {
-                    // Case 0, 1, 2, 3, 4, 5, 7, 8 have reaction link
-                    stubHtmlParser
-                        .GetReactionLinkPerPost(post)
-                        .Returns($"reaction-link-{index}");
-
-                    stubWebReader
-                        .Read($"reaction-link-{index}")
-                        .Returns(postReactionPageSource);
-                    stubHtmlParser
-                        .GetReactionCountPerPost(postReactionPageSource)
-                        .Returns(index);
+                    reactionLink = $"reaction-link-{index}";
                 }
-                else
-                {
-                    // Case 6 and 9 have no reaction link
-                    stubHtmlParser
-                        .GetReactionLinkPerPost(post)
-                        .Returns("");
+                stubHtmlParser
+                    .GetReactionLinkPerPost(post)
+                    .Returns(reactionLink);
 
-                    stubWebReader
-                        .Read("")
-                        .Returns(postReactionPageSource);
-                    stubHtmlParser
-                        .GetReactionCountPerPost(postReactionPageSource)
-                        .Returns(0);
-                }
+                var postReactionPageSource = Helpers.CreatePageSource(index);
+                stubWebReader
+                    .Read($"reaction-link-{index}")
+                    .Returns(postReactionPageSource);
+
+                stubHtmlParser
+                    .GetReactionCountPerPost(postReactionPageSource)
+                    .Returns(index);
             }
 
             var handler = new HandlerImpl(stubWebReader, stubHtmlParser, stubResultWriter);
@@ -79,16 +66,7 @@ namespace FinalUnitTestBigExercise.Tests
             var userlike = handler.GetUserLike("http://test.com/");
 
             // Assert
-            var expected = new Dictionary<string, int>();
-            for (int count = postCount - 1; count >= 0; count--)
-            {
-                if (count != 6 && count != 9)
-                {
-                    expected.Add($"username-{count}", count * pageCount);
-                }
-            }
-            expected.Add($"username-{6}", 0);
-            expected.Add($"username-{9}", 0);
+            var expected = Helpers.CreateExpected(pageCount, postCount);
 
             Assert.AreEqual(expected, userlike);
         }
@@ -127,18 +105,7 @@ namespace FinalUnitTestBigExercise.Tests
             var stubResultWriter = Substitute.For<ResultWriter>();
 
             string path = Helpers.GetAppDirectory() + "\\WriteResult_SuccessExecution_WriteResultToFile.txt";
-            var result = new Dictionary<string, int>();
-            result.Add("truong5779", 14);
-            result.Add("gogomymy", 5);
-            result.Add("Newboy", 2);
-            result.Add("tu nhi", 1);
-            result.Add("kysutach", 1);
-            result.Add("data.", 1);
-            result.Add("nhaquemexe", 0);
-            result.Add("data1", 0);
-            result.Add("accord_qng", 0);
-            result.Add("TranHai", 0);
-            result.Add("vixi69", 0);
+            var result = Helpers.CreateFakeResult();
 
             stubResultWriter
                 .When(writer => writer.WriteToFile(result, path))
@@ -154,20 +121,7 @@ namespace FinalUnitTestBigExercise.Tests
 
             // Assert
             string[] actual = Helpers.ReadFileLineByLine(path);
-            string[] expected =
-            {
-                "truong5779: 14",
-                "gogomymy: 5",
-                "Newboy: 2",
-                "tu nhi: 1",
-                "kysutach: 1",
-                "data.: 1",
-                "nhaquemexe: 0",
-                "data1: 0",
-                "accord_qng: 0",
-                "TranHai: 0",
-                "vixi69: 0"
-            };
+            string[] expected = Helpers.CreateExpectedResult();
 
             Assert.AreEqual(expected, actual);
         }

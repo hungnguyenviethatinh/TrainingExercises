@@ -62,6 +62,59 @@ namespace FinalUnitTestBigExercise.Tests
             return posts;
         }
 
+        public static IDictionary<string, int> CreateExpected(int pageCount, int postCount)
+        {
+            IDictionary<string, int> expected = new Dictionary<string, int>();
+            for (int count = postCount - 1; count >= 0; count--)
+            {
+                if (count != 6 && count != 9)
+                {
+                    expected.Add($"username-{count}", count * pageCount);
+                }
+            }
+
+            expected.Add($"username-{6}", 0);
+            expected.Add($"username-{9}", 0);
+
+            return expected;
+        }
+
+        public static IDictionary<string, int> CreateFakeResult()
+        {
+            IDictionary<string, int> result = new Dictionary<string, int>();
+            result.Add("truong5779", 14);
+            result.Add("gogomymy", 5);
+            result.Add("Newboy", 2);
+            result.Add("tu nhi", 1);
+            result.Add("kysutach", 1);
+            result.Add("data.", 1);
+            result.Add("nhaquemexe", 0);
+            result.Add("data1", 0);
+            result.Add("accord_qng", 0);
+            result.Add("TranHai", 0);
+            result.Add("vixi69", 0);
+
+            return result;
+        }
+
+        public static string[] CreateExpectedResult()
+        {
+            return new string[]
+            {
+                "truong5779: 14",
+                "gogomymy: 5",
+                "Newboy: 2",
+                "tu nhi: 1",
+                "kysutach: 1",
+                "data.: 1",
+                "nhaquemexe: 0",
+                "data1: 0",
+                "accord_qng: 0",
+                "TranHai: 0",
+                "vixi69: 0"
+            };
+        }
+
         public static bool FileExists(string file)
         {
             return File.Exists(file);
