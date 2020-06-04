@@ -1,12 +1,11 @@
-﻿using Final_UnitTest_BigExercise.Core;
+﻿using FinalUnitTestBigExercise.Core;
 using NUnit.Framework;
 using System;
-using System.Net;
 
-namespace Final_UnitTest_BigExercise.Tests
+namespace FinalUnitTestBigExercise.Tests
 {
     [TestFixture]
-    public class WebReaderTests
+    public class WebReaderImplTests
     {
         [TestCase(@"Resources\4916883\page-1")]
         [TestCase(@"Resources\4916883\page-2")]
@@ -19,35 +18,31 @@ namespace Final_UnitTest_BigExercise.Tests
         [TestCase(@"Resources\8973162\page-1")]
         [TestCase(@"Resources\8973162\page-2")]
         [TestCase(@"Resources\false-case")]
-        [Category("1. WebReaderTests_Read")]
+        [Category("1. WebReaderImplTests_Read")]
         public void Read_ValidAndExistUrl_ReturnHtmlNode(string file)
         {
-            var webReader = new WebReader();
+            // Arrange
+            var webReader = new WebReaderImpl();
 
             string appDirectory = Helpers.GetAppDirectory();
             string url = $"{appDirectory}\\{file}";
 
+            // Action
             var htmlNode = webReader.Read(url);
 
+            // Assert
             Assert.NotNull(htmlNode);
         }
 
         [TestCase("otosaigon.com")]
-        [Category("1. WebReaderTests_Read")]
+        [Category("1. WebReaderImplTests_Read")]
         public void Read_InvalidUrl_Throws(string url)
         {
-            var webReader = new WebReader();
+            // Arrange
+            var webReader = new WebReaderImpl();
 
+            // Action and Assert
             Assert.Throws<UriFormatException>(() => webReader.Read(url));
-        }
-
-        [TestCase("https://www.otosaigon.com/non-exist-page")]
-        [Category("1. WebReaderTests_Read")]
-        public void Read_Errors_Throws(string url)
-        {
-            var webReader = new WebReader();
-
-            Assert.Throws<WebException>(() => webReader.Read(url));
         }
     }
 }

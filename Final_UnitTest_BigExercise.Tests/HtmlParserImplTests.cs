@@ -1,37 +1,43 @@
-﻿using Final_UnitTest_BigExercise.Core;
+﻿using FinalUnitTestBigExercise.Core;
 using NUnit.Framework;
 using System;
 
-namespace Final_UnitTest_BigExercise.Tests
+namespace FinalUnitTestBigExercise.Tests
 {
     [TestFixture]
-    public class HtmlParserTests
+    public class HtmlParserImplImplTests
     {
         [TestCase(@"Resources\4916883\page-1", 5)]
         [TestCase(@"Resources\8973018\page-1", 3)]
         [TestCase(@"Resources\8973162\page-1", 2)]
         [TestCase(@"Resources\false-case", 1)]
-        [Category("2.1 HtmlParserTests_GetPageCount")]
+        [Category("2.1 HtmlParserImplTests_GetPageCount")]
         public void GetPageCount_NotNullThreadPageSource_ReturnAnInteger(string file, int expected)
         {
-            var htmlParser = new HtmlParser();
+            // Arrange
+            var HtmlParserImpl = new HtmlParserImpl();
 
             string appDirectory = Helpers.GetAppDirectory();
             var threadPageSource = Helpers.GetThreadPageSource($"{appDirectory}\\{file}");
 
-            int pageCount = htmlParser.GetPageCount(threadPageSource);
+            // Action
+            int pageCount = HtmlParserImpl.GetPageCount(threadPageSource);
 
+            // Assert
             Assert.AreEqual(pageCount, expected);
         }
 
         [Test]
-        [Category("2.1 HtmlParserTests_GetPageCount")]
+        [Category("2.1 HtmlParserImplTests_GetPageCount")]
         public void GetPageCount_NullThreadPageSource_Throws()
         {
-            var htmlParser = new HtmlParser();
+            // Arrange
+            var HtmlParserImpl = new HtmlParserImpl();
 
-            var exception = Assert.Catch<Exception>(() => htmlParser.GetPageCount(null));
+            // Action
+            var exception = Assert.Catch<Exception>(() => HtmlParserImpl.GetPageCount(null));
 
+            // Assert
             StringAssert.Contains("Value cannot be null", exception.Message);
         }
 
@@ -46,28 +52,34 @@ namespace Final_UnitTest_BigExercise.Tests
         [TestCase(@"Resources\8973162\page-1", 10)]
         [TestCase(@"Resources\8973162\page-2", 3)]
         [TestCase(@"Resources\false-case", 0)]
-        [Category("2.2 HtmlParserTests_GetPosts")]
+        [Category("2.2 HtmlParserImplTests_GetPosts")]
         public void GetPosts_NotNullThreadPageSource_ReturnAnArray(string file, int expected)
         {
-            var htmlParser = new HtmlParser();
+            // Arrange
+            var HtmlParserImpl = new HtmlParserImpl();
 
             string appDirectory = Helpers.GetAppDirectory();
             var threadPageSource = Helpers.GetThreadPageSource($"{appDirectory}\\{file}");
 
-            var posts = htmlParser.GetPosts(threadPageSource);
+            // Action
+            var posts = HtmlParserImpl.GetPosts(threadPageSource);
 
+            // Assert
             int postCount = posts.GetElementCount();
             Assert.AreEqual(postCount, expected);
         }
 
         [Test]
-        [Category("2.2 HtmlParserTests_GetPosts")]
+        [Category("2.2 HtmlParserImplTests_GetPosts")]
         public void GetPosts_NullThreadPageSource_Throws()
         {
-            var htmlParser = new HtmlParser();
+            // Arrange
+            var HtmlParserImpl = new HtmlParserImpl();
 
-            var exception = Assert.Catch<Exception>(() => htmlParser.GetPosts(null));
+            // Action
+            var exception = Assert.Catch<Exception>(() => HtmlParserImpl.GetPosts(null));
 
+            // Assert
             StringAssert.Contains("Value cannot be null", exception.Message);
         }
 
@@ -80,30 +92,36 @@ namespace Final_UnitTest_BigExercise.Tests
         [TestCase(6, "")]
         [TestCase(7, "https://www.otosaigon.com/posts/4920068/reactions")]
         [TestCase(8, "https://www.otosaigon.com/posts/4920235/reactions")]
-        [TestCase(9, "https://www.otosaigon.com/posts/4920336/reactions")]
-        [Category("2.3 HtmlParserTests_GetReactionLinkPerPost")]
+        [TestCase(9, "")]
+        [Category("2.3 HtmlParserImplTests_GetReactionLinkPerPost")]
         public void GetReactionLinkPerPost_NotNullPostNode_ReturnAString(int postIndex, string expected)
         {
-            var htmlParser = new HtmlParser();
+            // Arrange
+            var HtmlParserImpl = new HtmlParserImpl();
 
             string appDirectory = Helpers.GetAppDirectory();
             var threadPageSource = Helpers.GetThreadPageSource($"{appDirectory}\\Resources\\4916883\\page-1");
             var posts = Helpers.GetPosts(threadPageSource);
             var post = posts.GetElementAt(postIndex);
 
-            var reactionLink = htmlParser.GetReactionLinkPerPost(post);
+            // Action
+            var reactionLink = HtmlParserImpl.GetReactionLinkPerPost(post);
 
+            // Assert
             StringAssert.AreEqualIgnoringCase(reactionLink, expected);
         }
 
         [Test]
-        [Category("2.3 HtmlParserTests_GetReactionLinkPerPost")]
+        [Category("2.3 HtmlParserImplTests_GetReactionLinkPerPost")]
         public void GetReactionLinkPerPost_NullPostNode_Throws()
         {
-            var htmlParser = new HtmlParser();
+            // Arrange
+            var HtmlParserImpl = new HtmlParserImpl();
 
-            var exception = Assert.Catch<Exception>(() => htmlParser.GetReactionLinkPerPost(null));
+            // Action
+            var exception = Assert.Catch<Exception>(() => HtmlParserImpl.GetReactionLinkPerPost(null));
 
+            // Assert
             StringAssert.Contains("Value cannot be null", exception.Message);
         }
 
@@ -117,29 +135,35 @@ namespace Final_UnitTest_BigExercise.Tests
         [TestCase(7, "kysutach")]
         [TestCase(8, "gogomymy")]
         [TestCase(9, "truong5779")]
-        [Category("2.4 HtmlParserTests_GetUserNamePerPost")]
+        [Category("2.4 HtmlParserImplTests_GetUserNamePerPost")]
         public void GetUserNamePerPost_NotNullPostNode_ReturnAString(int postIndex, string expected)
         {
-            var htmlParser = new HtmlParser();
+            // Arrange
+            var HtmlParserImpl = new HtmlParserImpl();
 
             string appDirectory = Helpers.GetAppDirectory();
             var threadPageSource = Helpers.GetThreadPageSource($"{appDirectory}\\Resources\\4916883\\page-1");
             var posts = Helpers.GetPosts(threadPageSource);
             var post = posts.GetElementAt(postIndex);
 
-            var userName = htmlParser.GetUserNamePerPost(post);
+            // Action
+            var userName = HtmlParserImpl.GetUserNamePerPost(post);
 
+            // Assert
             StringAssert.AreEqualIgnoringCase(userName, expected);
         }
 
         [Test]
-        [Category("2.4 HtmlParserTests_GetUserNamePerPost")]
+        [Category("2.4 HtmlParserImplTests_GetUserNamePerPost")]
         public void GetUserNamePerPost_NullPostNode_Throws()
         {
-            var htmlParser = new HtmlParser();
+            // Arrange
+            var HtmlParserImpl = new HtmlParserImpl();
 
-            var exception = Assert.Catch<Exception>(() => htmlParser.GetUserNamePerPost(null));
+            // Action
+            var exception = Assert.Catch<Exception>(() => HtmlParserImpl.GetUserNamePerPost(null));
 
+            // Assert
             StringAssert.Contains("Value cannot be null", exception.Message);
         }
 
@@ -147,27 +171,33 @@ namespace Final_UnitTest_BigExercise.Tests
         [TestCase(@"Resources\4916883\reaction-2", 3)]
         [TestCase(@"Resources\4916883\reaction-3", 1)]
         [TestCase(@"Resources\false-case", 0)]
-        [Category("2.5 HtmlParserTests_GetReactionCountPerPost")]
+        [Category("2.5 HtmlParserImplTests_GetReactionCountPerPost")]
         public void GetReactionCountPerPost_NotNullPostReactionPageSource_ReturnAnInteger(string file, int expected)
         {
-            var htmlParser = new HtmlParser();
+            // Arrange
+            var HtmlParserImpl = new HtmlParserImpl();
 
             string appDirectory = Helpers.GetAppDirectory();
             var postReactionPageSource = Helpers.GetThreadPageSource($"{appDirectory}\\{file}");
 
-            int reactionCount = htmlParser.GetReactionCountPerPost(postReactionPageSource);
+            // Action
+            int reactionCount = HtmlParserImpl.GetReactionCountPerPost(postReactionPageSource);
 
+            // Assert
             Assert.AreEqual(reactionCount, expected);
         }
 
         [Test]
-        [Category("2.5 HtmlParserTests_GetReactionCountPerPost")]
+        [Category("2.5 HtmlParserImplTests_GetReactionCountPerPost")]
         public void GetReactionCountPerPost_NullPostReactionPageSource_Throws()
         {
-            var htmlParser = new HtmlParser();
+            // Arrange
+            var HtmlParserImpl = new HtmlParserImpl();
 
-            var exception = Assert.Catch<Exception>(() => htmlParser.GetReactionCountPerPost(null));
+            // Action
+            var exception = Assert.Catch<Exception>(() => HtmlParserImpl.GetReactionCountPerPost(null));
 
+            // Assert
             StringAssert.Contains("Value cannot be null", exception.Message);
         }
     }

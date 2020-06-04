@@ -1,9 +1,9 @@
 ﻿using HtmlAgilityPack;
 using System.Collections.Generic;
 
-namespace Final_UnitTest_BigExercise.Core.Interfaces
+namespace FinalUnitTestBigExercise.Core.Interfaces
 {
-    public interface IHtmlParser
+    public interface HtmlParser
     {
         int GetPageCount(HtmlNode threadPageSource);
 

@@ -69,12 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HandlerTests.cs" />
+    <Compile Include="HandlerImplTests.cs" />
     <Compile Include="Helpers.cs" />
-    <Compile Include="HtmlParserTests.cs" />
+    <Compile Include="HtmlParserImplTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResultWriterTests.cs" />
-    <Compile Include="WebReaderTests.cs" />
+    <Compile Include="ResultWriterImplTests.cs" />
+    <Compile Include="WebReaderImplTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -89,9 +89,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Final_UnitTest_BigExercise\Final_UnitTest_BigExercise.csproj">
+    <ProjectReference Include="..\Final_UnitTest_BigExercise\FinalUnitTestBigExercise.csproj">
       <Project>{4DDE2362-1CB8-443D-A905-7A26405B90F0}</Project>
-      <Name>Final_UnitTest_BigExercise</Name>
+      <Name>FinalUnitTestBigExercise</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

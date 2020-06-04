@@ -1,49 +1,57 @@
-﻿using Final_UnitTest_BigExercise.Core;
+﻿using FinalUnitTestBigExercise.Core;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 
-namespace Final_UnitTest_BigExercise.Tests
+namespace FinalUnitTestBigExercise.Tests
 {
     [TestFixture]
-    public class ResultWriterTests
+    public class ResultWriterImplTests
     {
         [Test]
-        [Category("3. ResultWriterTests_WriteToFile")]
+        [Category("3. ResultWriterImplTests_WriteToFile")]
         public void WriteToFile_WhenCalled_AlwaysCreateFile()
         {
-            var resultWriter = new ResultWriter();
+            // Arrange
+            var resultWriter = new ResultWriterImpl();
 
             string path = Helpers.GetAppDirectory() + "\\WriteToFile_WhenCalled_CreateFile.txt";
             var result = new Dictionary<string, int>();
 
+            // Action
             resultWriter.WriteToFile(result, path);
 
+            // Assert
             var isFileCreated = Helpers.FileExists(path);
 
             Assert.IsTrue(isFileCreated);
         }
 
         [Test]
-        [Category("3. ResultWriterTests_WriteToFile")]
+        [Category("3. ResultWriterImplTests_WriteToFile")]
         public void WriteToFile_EmptyResult_CreateEmptyFile()
         {
-            var resultWriter = new ResultWriter();
+            // Arrange
+            var resultWriter = new ResultWriterImpl();
 
             string path = Helpers.GetAppDirectory() + "\\WriteToFile_EmptyResult_CreateEmptyFile.txt";
             var result = new Dictionary<string, int>();
 
+            // Action
             resultWriter.WriteToFile(result, path);
 
+            // Assert
             var isEmpty = Helpers.IsEmptyFile(path);
+
             Assert.That(isEmpty, Is.True);
         }
 
         [Test]
-        [Category("3. ResultWriterTests_WriteToFile")]
+        [Category("3. ResultWriterImplTests_WriteToFile")]
         public void WriteToFile_NotEmptyResult_WriteResultToFile()
         {
-            var resultWriter = new ResultWriter();
+            // Arrange
+            var resultWriter = new ResultWriterImpl();
 
             string path = Helpers.GetAppDirectory() + "\\WriteToFile_NotEmptyResult_WriteResultToFile.txt";
             var result = new Dictionary<string, int>();
@@ -59,8 +67,10 @@ namespace Final_UnitTest_BigExercise.Tests
             result.Add("TranHai", 0);
             result.Add("vixi69", 0);
 
+            // Action
             resultWriter.WriteToFile(result, path);
 
+            // Assert
             string[] actual = Helpers.ReadFileLineByLine(path);
             string[] expected =
             {
@@ -81,29 +91,19 @@ namespace Final_UnitTest_BigExercise.Tests
         }
 
         [TestCase(@"d:\test\test.txt")]
-        [Category("3. ResultWriterTests_WriteToFile")]
+        [Category("3. ResultWriterImplTests_WriteToFile")]
         public void WriteToFile_NonExistPath_Throws(string path)
         {
-            var resultWriter = new ResultWriter();
+            // Arrange
+            var resultWriter = new ResultWriterImpl();
 
             var result = new Dictionary<string, int>();
 
+            // Action
             var exception = Assert.Catch<Exception>(() => resultWriter.WriteToFile(result, path));
 
+            // Assert
             StringAssert.Contains($"Could not find a part of the path '{path}'", exception.Message);
-        }
-
-        [TestCase(@"c:\test.txt")]
-        [Category("3. ResultWriterTests_WriteToFile")]
-        public void WriteToFile_NoAccessPermission_Throws(string path)
-        {
-            var resultWriter = new ResultWriter();
-
-            var result = new Dictionary<string, int>();
-
-            var exception = Assert.Catch<Exception>(() => resultWriter.WriteToFile(result, path));
-
-            StringAssert.Contains($"Access to the path '{path}' is denied", exception.Message);
         }
     }
 }

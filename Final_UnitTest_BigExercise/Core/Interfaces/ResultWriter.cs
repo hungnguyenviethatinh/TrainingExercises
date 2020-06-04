@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Final_UnitTest_BigExercise.Core.Interfaces
+namespace FinalUnitTestBigExercise.Core.Interfaces
 {
-    public interface IResultWriter
+    public interface ResultWriter
     {
         void WriteToFile(IDictionary<string, int> result, string path);
     }

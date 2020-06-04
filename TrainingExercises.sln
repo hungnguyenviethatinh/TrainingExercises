@@ -32,9 +32,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week4_UnitTest_C3_LogAnalyz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week4_UnitTest_C3_LogAnalyzer.Tests", "Week4_UnitTest_C3_LogAnalyzer.Tests\Week4_UnitTest_C3_LogAnalyzer.Tests.csproj", "{6A7A6D41-8E8C-4762-A9BE-59828D9BCCDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Final_UnitTest_BigExercise", "Final_UnitTest_BigExercise\Final_UnitTest_BigExercise.csproj", "{4DDE2362-1CB8-443D-A905-7A26405B90F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalUnitTestBigExercise", "Final_UnitTest_BigExercise\FinalUnitTestBigExercise.csproj", "{4DDE2362-1CB8-443D-A905-7A26405B90F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Final_UnitTest_BigExercise.Tests", "Final_UnitTest_BigExercise.Tests\Final_UnitTest_BigExercise.Tests.csproj", "{F82F59B1-3D31-4B40-BD1D-558AF8F4168E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalUnitTestBigExercise.Tests", "Final_UnitTest_BigExercise.Tests\FinalUnitTestBigExercise.Tests.csproj", "{F82F59B1-3D31-4B40-BD1D-558AF8F4168E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week4_UnitTest_C4_LogAnalyzer", "Week4_UnitTest_C4_LogAnalyzer\Week4_UnitTest_C4_LogAnalyzer.csproj", "{D6C123CF-0E78-4FE2-AEFA-B400CA3692A2}"
 EndProject

@@ -2,7 +2,7 @@
 using HtmlAgilityPack;
 using System.Collections.Generic;
 
-namespace Final_UnitTest_BigExercise.Helpers
+namespace FinalUnitTestBigExercise.Helpers
 {
     public static class Utils
     {

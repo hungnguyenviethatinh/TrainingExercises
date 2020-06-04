@@ -1,11 +1,11 @@
-﻿using Final_UnitTest_BigExercise.Core.Interfaces;
-using Final_UnitTest_BigExercise.Helpers;
+﻿using FinalUnitTestBigExercise.Core.Interfaces;
+using FinalUnitTestBigExercise.Helpers;
 using HtmlAgilityPack;
 using System.Collections.Generic;
 
-namespace Final_UnitTest_BigExercise.Core
+namespace FinalUnitTestBigExercise.Core
 {
-    public class HtmlParser : IHtmlParser
+    public class HtmlParserImpl : HtmlParser
     {
         public int GetPageCount(HtmlNode threadPageSource)
         {
@@ -45,12 +45,8 @@ namespace Final_UnitTest_BigExercise.Core
 
         public string GetUserNamePerPost(HtmlNode postNode)
         {
-            string userName = string.Empty;
             var userNode = Utils.QuerySelector(postNode, Constants.UserNodeSelector);
-            if (userNode != null)
-            {
-                userName = userNode.InnerText.Trim();
-            }
+            string userName = userNode.InnerText.Trim();
 
             return userName;
         }

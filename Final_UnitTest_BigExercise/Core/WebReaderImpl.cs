@@ -1,9 +1,9 @@
-﻿using Final_UnitTest_BigExercise.Core.Interfaces;
+﻿using FinalUnitTestBigExercise.Core.Interfaces;
 using HtmlAgilityPack;
 
-namespace Final_UnitTest_BigExercise.Core
+namespace FinalUnitTestBigExercise.Core
 {
-    public class WebReader : IWebReader
+    public class WebReaderImpl : WebReader
     {
         public virtual HtmlNode Read(string url)
         {

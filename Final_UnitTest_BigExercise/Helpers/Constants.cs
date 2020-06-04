@@ -1,4 +1,4 @@
-﻿namespace Final_UnitTest_BigExercise.Helpers
+﻿namespace FinalUnitTestBigExercise.Helpers
 {
     public static class Constants
     {

@@ -1,10 +1,10 @@
-﻿using Final_UnitTest_BigExercise.Core.Interfaces;
+﻿using FinalUnitTestBigExercise.Core.Interfaces;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Final_UnitTest_BigExercise.Core
+namespace FinalUnitTestBigExercise.Core
 {
-    public class ResultWriter : IResultWriter
+    public class ResultWriterImpl : ResultWriter
     {
         public void WriteToFile(IDictionary<string, int> result, string path)
         {

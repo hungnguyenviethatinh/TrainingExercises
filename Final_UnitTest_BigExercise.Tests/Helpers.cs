@@ -1,11 +1,11 @@
-﻿using Final_UnitTest_BigExercise.Helpers;
+﻿using FinalUnitTestBigExercise.Helpers;
 using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Final_UnitTest_BigExercise.Tests
+namespace FinalUnitTestBigExercise.Tests
 {
     public static class Helpers
     {

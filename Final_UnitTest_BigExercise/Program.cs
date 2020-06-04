@@ -1,14 +1,14 @@
 ﻿using StructureMap;
 using System;
 
-namespace Final_UnitTest_BigExercise
+namespace FinalUnitTestBigExercise
 {
     static class Program
     {
         static void Main()
         {
             var container = Container.For<DependencyRegistration>();
-            var handler = container.GetInstance<IHandler>();
+            var handler = container.GetInstance<Handler>();
 
             string threadUrl = "https://www.otosaigon.com/threads/camry-8x9x-and-more.4916883/";
             string outputPath = "result.txt";

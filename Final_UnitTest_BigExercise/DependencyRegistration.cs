@@ -1,20 +1,17 @@
-﻿using Final_UnitTest_BigExercise.Common;
-using Final_UnitTest_BigExercise.Common.Interfaces;
-using Final_UnitTest_BigExercise.Core;
-using Final_UnitTest_BigExercise.Core.Interfaces;
+﻿using FinalUnitTestBigExercise.Core;
+using FinalUnitTestBigExercise.Core.Interfaces;
 using StructureMap;
 
-namespace Final_UnitTest_BigExercise
+namespace FinalUnitTestBigExercise
 {
     public class DependencyRegistration : Registry
     {
         public DependencyRegistration()
         {
-            For<ILogger>().Use<Logger>();
-            For<IWebReader>().Use<WebReader>();
-            For<IHtmlParser>().Use<HtmlParser>();
-            For<IResultWriter>().Use<ResultWriter>();
-            For<IHandler>().Use<Handler>();
+            For<WebReader>().Use<WebReaderImpl>();
+            For<HtmlParser>().Use<HtmlParserImpl>();
+            For<ResultWriter>().Use<ResultWriterImpl>();
+            For<Handler>().Use<HandlerImpl>();
         }
     }
 }
