@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Week4_UnitTest_C5_LogAnalyzer.Tests
+﻿namespace Week4_UnitTest_C5_LogAnalyzer.Tests
 {
     public class FakeWebService : IWebService
     {
