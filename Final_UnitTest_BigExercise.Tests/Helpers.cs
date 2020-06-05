@@ -37,7 +37,8 @@ namespace FinalUnitTestBigExercise.Tests
             return nodes.ElementAt(index);
         }
 
-        public static HtmlNode CreatePageSource(int index)
+        // GetUserLike_Success_OutputUserLikeToFile
+        public static HtmlNode CreateFakePageSource(int index)
         {
             return new HtmlNode(HtmlNodeType.Document, new HtmlDocument(), index)
             {
@@ -45,7 +46,7 @@ namespace FinalUnitTestBigExercise.Tests
             };
         }
 
-        public static IEnumerable<HtmlNode> CreatePosts(int postCount)
+        public static IEnumerable<HtmlNode> CreateFakePosts(int postCount)
         {
             var posts = new List<HtmlNode>();
 
@@ -62,23 +63,71 @@ namespace FinalUnitTestBigExercise.Tests
             return posts;
         }
 
-        public static IDictionary<string, int> CreateExpected(int pageCount, int postCount)
+        public static string CreateFakeUserName(int index)
+        {
+            string[] userNames =
+            {
+                "truong5779",
+                "gogomymy",
+                "Newboy",
+                "tu nhi",
+                "kysutach",
+                "data.",
+                "nhaquemexe",
+                "data1",
+                "accord_qng",
+                "TranHai",
+                "vixi69"
+            };
+
+            return userNames[index];
+        }
+
+        public static string CreateFakeReactionLink(int index)
+        {
+            string[] reactionLinks =
+            {
+                "/posts/4916883/reactions",
+                "/posts/4917032/reactions",
+                "/posts/4917276/reactions",
+                "/posts/4918560/reactions",
+                "/posts/4918681/reactions",
+                "/posts/4919927/reactions",
+                "",
+                "/posts/4920068/reactions",
+                "/posts/4920235/reactions",
+                ""
+            };
+
+            return reactionLinks[index];
+        }
+
+        public static int CreateFakeReactionCount(int index)
+        {
+            int[] reactionCounts = { 10, 9, 8, 7, 6, 5, 0, 4, 3, 0 };
+
+            return reactionCounts[index];
+        }
+
+        public static IDictionary<string, int> CreateExpectedUserLike()
         {
             IDictionary<string, int> expected = new Dictionary<string, int>();
-            for (int count = postCount - 1; count >= 0; count--)
-            {
-                if (count != 6 && count != 9)
-                {
-                    expected.Add($"username-{count}", count * pageCount);
-                }
-            }
-
-            expected.Add($"username-{6}", 0);
-            expected.Add($"username-{9}", 0);
+            expected.Add("truong5779", 50);
+            expected.Add("gogomymy", 45);
+            expected.Add("Newboy", 40);
+            expected.Add("tu nhi", 35);
+            expected.Add("kysutach", 30);
+            expected.Add("data.", 25);
+            expected.Add("nhaquemexe", 0);
+            expected.Add("data1", 20);
+            expected.Add("accord_qng", 15);
+            expected.Add("TranHai", 0);
 
             return expected;
         }
+        // GetUserLike_Success_OutputUserLikeToFile.
 
+        // WriteResult_Success_WriteResultToFile
         public static IDictionary<string, int> CreateFakeResult()
         {
             IDictionary<string, int> result = new Dictionary<string, int>();
@@ -114,6 +163,7 @@ namespace FinalUnitTestBigExercise.Tests
                 "vixi69: 0"
             };
         }
+        // WriteResult_Success_WriteResultToFile.
 
         public static bool FileExists(string file)
         {

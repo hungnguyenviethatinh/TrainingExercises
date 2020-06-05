@@ -15,13 +15,13 @@ namespace FinalUnitTestBigExercise.Tests
         public void GetPageCount_NotNullThreadPageSource_ReturnAnInteger(string file, int expected)
         {
             // Arrange
-            var HtmlParserImpl = new HtmlParserImpl();
+            var htmlParser = new HtmlParserImpl();
 
             string appDirectory = Helpers.GetAppDirectory();
             var threadPageSource = Helpers.GetThreadPageSource($"{appDirectory}\\{file}");
 
             // Action
-            int pageCount = HtmlParserImpl.GetPageCount(threadPageSource);
+            int pageCount = htmlParser.GetPageCount(threadPageSource);
 
             // Assert
             Assert.AreEqual(pageCount, expected);
@@ -32,10 +32,10 @@ namespace FinalUnitTestBigExercise.Tests
         public void GetPageCount_NullThreadPageSource_Throws()
         {
             // Arrange
-            var HtmlParserImpl = new HtmlParserImpl();
+            var htmlParser = new HtmlParserImpl();
 
             // Action
-            var exception = Assert.Catch<Exception>(() => HtmlParserImpl.GetPageCount(null));
+            var exception = Assert.Catch<Exception>(() => htmlParser.GetPageCount(null));
 
             // Assert
             StringAssert.Contains("Value cannot be null", exception.Message);
@@ -56,13 +56,13 @@ namespace FinalUnitTestBigExercise.Tests
         public void GetPosts_NotNullThreadPageSource_ReturnAnArray(string file, int expected)
         {
             // Arrange
-            var HtmlParserImpl = new HtmlParserImpl();
+            var htmlParser = new HtmlParserImpl();
 
             string appDirectory = Helpers.GetAppDirectory();
             var threadPageSource = Helpers.GetThreadPageSource($"{appDirectory}\\{file}");
 
             // Action
-            var posts = HtmlParserImpl.GetPosts(threadPageSource);
+            var posts = htmlParser.GetPosts(threadPageSource);
 
             // Assert
             int postCount = posts.GetElementCount();
@@ -74,10 +74,10 @@ namespace FinalUnitTestBigExercise.Tests
         public void GetPosts_NullThreadPageSource_Throws()
         {
             // Arrange
-            var HtmlParserImpl = new HtmlParserImpl();
+            var htmlParser = new HtmlParserImpl();
 
             // Action
-            var exception = Assert.Catch<Exception>(() => HtmlParserImpl.GetPosts(null));
+            var exception = Assert.Catch<Exception>(() => htmlParser.GetPosts(null));
 
             // Assert
             StringAssert.Contains("Value cannot be null", exception.Message);
@@ -97,7 +97,7 @@ namespace FinalUnitTestBigExercise.Tests
         public void GetReactionLinkPerPost_NotNullPostNode_ReturnAString(int postIndex, string expected)
         {
             // Arrange
-            var HtmlParserImpl = new HtmlParserImpl();
+            var htmlParser = new HtmlParserImpl();
 
             string appDirectory = Helpers.GetAppDirectory();
             var threadPageSource = Helpers.GetThreadPageSource($"{appDirectory}\\Resources\\4916883\\page-1");
@@ -105,7 +105,7 @@ namespace FinalUnitTestBigExercise.Tests
             var post = posts.GetElementAt(postIndex);
 
             // Action
-            var reactionLink = HtmlParserImpl.GetReactionLinkPerPost(post);
+            var reactionLink = htmlParser.GetReactionLinkPerPost(post);
 
             // Assert
             StringAssert.AreEqualIgnoringCase(reactionLink, expected);
@@ -116,10 +116,10 @@ namespace FinalUnitTestBigExercise.Tests
         public void GetReactionLinkPerPost_NullPostNode_Throws()
         {
             // Arrange
-            var HtmlParserImpl = new HtmlParserImpl();
+            var htmlParser = new HtmlParserImpl();
 
             // Action
-            var exception = Assert.Catch<Exception>(() => HtmlParserImpl.GetReactionLinkPerPost(null));
+            var exception = Assert.Catch<Exception>(() => htmlParser.GetReactionLinkPerPost(null));
 
             // Assert
             StringAssert.Contains("Value cannot be null", exception.Message);
@@ -139,7 +139,7 @@ namespace FinalUnitTestBigExercise.Tests
         public void GetUserNamePerPost_NotNullPostNode_ReturnAString(int postIndex, string expected)
         {
             // Arrange
-            var HtmlParserImpl = new HtmlParserImpl();
+            var htmlParser = new HtmlParserImpl();
 
             string appDirectory = Helpers.GetAppDirectory();
             var threadPageSource = Helpers.GetThreadPageSource($"{appDirectory}\\Resources\\4916883\\page-1");
@@ -147,7 +147,7 @@ namespace FinalUnitTestBigExercise.Tests
             var post = posts.GetElementAt(postIndex);
 
             // Action
-            var userName = HtmlParserImpl.GetUserNamePerPost(post);
+            var userName = htmlParser.GetUserNamePerPost(post);
 
             // Assert
             StringAssert.AreEqualIgnoringCase(userName, expected);
@@ -158,10 +158,10 @@ namespace FinalUnitTestBigExercise.Tests
         public void GetUserNamePerPost_NullPostNode_Throws()
         {
             // Arrange
-            var HtmlParserImpl = new HtmlParserImpl();
+            var htmlParser = new HtmlParserImpl();
 
             // Action
-            var exception = Assert.Catch<Exception>(() => HtmlParserImpl.GetUserNamePerPost(null));
+            var exception = Assert.Catch<Exception>(() => htmlParser.GetUserNamePerPost(null));
 
             // Assert
             StringAssert.Contains("Value cannot be null", exception.Message);
@@ -175,13 +175,13 @@ namespace FinalUnitTestBigExercise.Tests
         public void GetReactionCountPerPost_NotNullPostReactionPageSource_ReturnAnInteger(string file, int expected)
         {
             // Arrange
-            var HtmlParserImpl = new HtmlParserImpl();
+            var htmlParser = new HtmlParserImpl();
 
             string appDirectory = Helpers.GetAppDirectory();
             var postReactionPageSource = Helpers.GetThreadPageSource($"{appDirectory}\\{file}");
 
             // Action
-            int reactionCount = HtmlParserImpl.GetReactionCountPerPost(postReactionPageSource);
+            int reactionCount = htmlParser.GetReactionCountPerPost(postReactionPageSource);
 
             // Assert
             Assert.AreEqual(reactionCount, expected);
@@ -192,10 +192,10 @@ namespace FinalUnitTestBigExercise.Tests
         public void GetReactionCountPerPost_NullPostReactionPageSource_Throws()
         {
             // Arrange
-            var HtmlParserImpl = new HtmlParserImpl();
+            var htmlParser = new HtmlParserImpl();
 
             // Action
-            var exception = Assert.Catch<Exception>(() => HtmlParserImpl.GetReactionCountPerPost(null));
+            var exception = Assert.Catch<Exception>(() => htmlParser.GetReactionCountPerPost(null));
 
             // Assert
             StringAssert.Contains("Value cannot be null", exception.Message);

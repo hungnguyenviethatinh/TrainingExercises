@@ -18,18 +18,20 @@ namespace FinalUnitTestBigExercise.Tests
             var stubHtmlParser = Substitute.For<HtmlParser>();
             var stubResultWriter = Substitute.For<ResultWriter>();
 
+            string threadUrl = "http://test.com/";
             int pageCount = 5;
             int postCount = 10;
-            var threadPageSource = Helpers.CreatePageSource(0);
-            var posts = Helpers.CreatePosts(postCount);
+            var threadPageSource = Helpers.CreateFakePageSource(0);
+            var posts = Helpers.CreateFakePosts(postCount);
 
             stubWebReader
-                .Read(Arg.Compat.Is<string>(arg => arg.Contains("http://test.com/")))
+                .Read(Arg.Compat.Is<string>(arg => arg.Contains(threadUrl)))
                 .Returns(threadPageSource);
 
             stubHtmlParser
                 .GetPageCount(threadPageSource)
                 .Returns(pageCount);
+
             stubHtmlParser
                 .GetPosts(threadPageSource)
                 .Returns(posts);
@@ -37,36 +39,35 @@ namespace FinalUnitTestBigExercise.Tests
             for (int index = 0; index < postCount; index++)
             {
                 var post = posts.GetElementAt(index);
+
+                string userName = Helpers.CreateFakeUserName(index);
                 stubHtmlParser
                     .GetUserNamePerPost(post)
-                    .Returns($"username-{index}");
+                    .Returns(userName);
 
-                string reactionLink = string.Empty;
-                if (index != 6 && index != 9)
-                {
-                    reactionLink = $"reaction-link-{index}";
-                }
+                string reactionLink = Helpers.CreateFakeReactionLink(index);
                 stubHtmlParser
                     .GetReactionLinkPerPost(post)
                     .Returns(reactionLink);
 
-                var postReactionPageSource = Helpers.CreatePageSource(index);
+                var postReactionPageSource = Helpers.CreateFakePageSource(index);
                 stubWebReader
-                    .Read($"reaction-link-{index}")
+                    .Read(reactionLink)
                     .Returns(postReactionPageSource);
 
+                var reactionCount = Helpers.CreateFakeReactionCount(index);
                 stubHtmlParser
                     .GetReactionCountPerPost(postReactionPageSource)
-                    .Returns(index);
+                    .Returns(reactionCount);
             }
 
             var handler = new HandlerImpl(stubWebReader, stubHtmlParser, stubResultWriter);
 
             // Action
-            var userlike = handler.GetUserLike("http://test.com/");
+            var userlike = handler.GetUserLike(threadUrl);
 
             // Assert
-            var expected = Helpers.CreateExpected(pageCount, postCount);
+            var expected = Helpers.CreateExpectedUserLike();
 
             Assert.AreEqual(expected, userlike);
         }
@@ -104,7 +105,7 @@ namespace FinalUnitTestBigExercise.Tests
             var stubHtmlParser = Substitute.For<HtmlParser>();
             var stubResultWriter = Substitute.For<ResultWriter>();
 
-            string path = Helpers.GetAppDirectory() + "\\WriteResult_SuccessExecution_WriteResultToFile.txt";
+            string path = Helpers.GetAppDirectory() + "\\WriteResult_Success_WriteResultToFile.txt";
             var result = Helpers.CreateFakeResult();
 
             stubResultWriter
