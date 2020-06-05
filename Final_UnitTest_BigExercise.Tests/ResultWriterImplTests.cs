@@ -54,38 +54,14 @@ namespace FinalUnitTestBigExercise.Tests
             var resultWriter = new ResultWriterImpl();
 
             string path = Helpers.GetAppDirectory() + "\\WriteToFile_NotEmptyResult_WriteResultToFile.txt";
-            var result = new Dictionary<string, int>();
-            result.Add("truong5779", 14);
-            result.Add("gogomymy", 5);
-            result.Add("Newboy", 2);
-            result.Add("tu nhi", 1);
-            result.Add("kysutach", 1);
-            result.Add("data.", 1);
-            result.Add("nhaquemexe", 0);
-            result.Add("data1", 0);
-            result.Add("accord_qng", 0);
-            result.Add("TranHai", 0);
-            result.Add("vixi69", 0);
+            var result = Helpers.CreateFakeResult();
 
             // Action
             resultWriter.WriteToFile(result, path);
 
             // Assert
             string[] actual = Helpers.ReadFileLineByLine(path);
-            string[] expected =
-            {
-                "truong5779: 14",
-                "gogomymy: 5",
-                "Newboy: 2",
-                "tu nhi: 1",
-                "kysutach: 1",
-                "data.: 1",
-                "nhaquemexe: 0",
-                "data1: 0",
-                "accord_qng: 0",
-                "TranHai: 0",
-                "vixi69: 0"
-            };
+            string[] expected = Helpers.CreateExpectedResult();
 
             Assert.AreEqual(expected, actual);
         }

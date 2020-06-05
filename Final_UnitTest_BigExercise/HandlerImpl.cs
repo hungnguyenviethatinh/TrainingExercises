@@ -21,8 +21,14 @@ namespace FinalUnitTestBigExercise
 
         public IDictionary<string, int> GetUserLike(string threadUrl)
         {
+            IDictionary<string, int> result = new Dictionary<string, int>();
+
             int pageCount = GetPageCount(threadUrl);
-            var result = GetUserLike(threadUrl, pageCount, 1);
+            for (int page = 1; page <= pageCount; page++)
+            {
+                var userLike = GetUserLikePerPage(threadUrl, page);
+                result.Merge(userLike);
+            }
 
             return result
                 .OrderByDescending(pair => pair.Value)
@@ -42,13 +48,9 @@ namespace FinalUnitTestBigExercise
             return pageCount;
         }
 
-        IDictionary<string, int> GetUserLike(string threadUrl, int pageCount, int page)
+        IDictionary<string, int> GetUserLikePerPage(string threadUrl, int page)
         {
             IDictionary<string, int> result = new Dictionary<string, int>();
-            if (page > pageCount)
-            {
-                return result;
-            }
 
             string url = $"{threadUrl}page-{page}";
             var threadPageSource = webReader.Read(url);
@@ -62,9 +64,7 @@ namespace FinalUnitTestBigExercise
                 result.AddPair(userName, reactionCount);
             }
 
-            var nextPageResult = GetUserLike(threadUrl, pageCount, page + 1);
-
-            return result.Merge(nextPageResult);
+            return result;
         }
 
         int GetReactionCountPerPost(HtmlNode postNode)

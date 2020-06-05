@@ -64,12 +64,12 @@ namespace FinalUnitTestBigExercise.Tests
             var handler = new HandlerImpl(stubWebReader, stubHtmlParser, stubResultWriter);
 
             // Action
-            var userlike = handler.GetUserLike(threadUrl);
+            var userLike = handler.GetUserLike(threadUrl);
 
             // Assert
             var expected = Helpers.CreateExpectedUserLike();
 
-            Assert.AreEqual(expected, userlike);
+            Assert.AreEqual(expected, userLike);
         }
 
         [TestCase("otosaigon.com")]
